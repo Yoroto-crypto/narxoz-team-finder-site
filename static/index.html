@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Narxoz Team Finder</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="board-head">
+    <div class="board-title">
+      <h1 id="t-title">Доска объявлений: ищем сокомандников</h1>
+      <p id="t-subtitle">Дипломы, курсовые, хакатоны, стартап-идеи — оставь анкету или найди тех, кто ищет тебя.</p>
+    </div>
+    <div class="lang-switch" id="lang-switch">
+      <button data-lang="ru">Рус</button>
+      <button data-lang="kz">Қаз</button>
+      <button data-lang="en">Eng</button>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Поиск по навыку, теме, языку...">
+    </div>
+    <button class="btn btn-primary" id="open-modal-btn">Разместить анкету</button>
+  </div>
+
+  <div id="board" class="board"></div>
+
+  <div id="empty-state" class="empty-state" style="display:none">
+    <h3 id="t-empty-title">Пока анкет нет</h3>
+    <p id="t-empty-sub">Будьте первым, кто разместит объявление, и позовите друзей.</p>
+  </div>
+
+  <footer class="board-foot">Narxoz Team Finder</footer>
+</div>
+
+<div class="modal-backdrop" id="modal-backdrop">
+  <div class="modal">
+    <button class="close-x" id="modal-close">&times;</button>
+    <h2 id="t-modal-title">Новая анкета</h2>
+    <div class="step-label" id="step-label">Шаг 1 из 6</div>
+
+    <form id="profile-form">
+      <div class="form-step" data-step="1">
+        <label id="l-name">Как вас зовут и какой курс?</label>
+        <input type="text" id="f-name" required>
+      </div>
+
+      <div class="form-step" data-step="2" hidden>
+        <label id="l-major">Специальность/направление?</label>
+        <input type="text" id="f-major" required>
+      </div>
+
+      <div class="form-step" data-step="3" hidden>
+        <label id="l-topic">Тема диплома/курсовой/проекта?</label>
+        <textarea id="f-topic" rows="2" required></textarea>
+      </div>
+
+      <div class="form-step" data-step="4" hidden>
+        <label id="l-skills">Ваши навыки (через запятую)?</label>
+        <input type="text" id="f-skills" required>
+        <label id="l-looking" style="margin-top:16px">Кого ищете в команду?</label>
+        <input type="text" id="f-looking" required>
+      </div>
+
+      <div class="form-step" data-step="5" hidden>
+        <label id="l-lang">Язык общения в команде?</label>
+        <div class="choice-row" id="lang-choice">
+          <button type="button" data-val="ru">Русский</button>
+          <button type="button" data-val="kz">Қазақша</button>
+          <button type="button" data-val="en">English</button>
+          <button type="button" data-val="any" id="lang-any-btn">Не принципиально</button>
+        </div>
+      </div>
+
+      <div class="form-step" data-step="6" hidden>
+        <label id="l-contact-method">Как с вами связаться?</label>
+        <div class="choice-row" id="contact-method-choice">
+          <button type="button" data-val="telegram" id="cm-telegram-btn">Telegram</button>
+          <button type="button" data-val="phone" id="cm-phone-btn">Телефон</button>
+          <button type="button" data-val="email" id="cm-email-btn">Email</button>
+        </div>
+        <input type="text" id="f-contact-value" style="margin-top:12px" placeholder="@username / +7.../ email@...">
+      </div>
+
+      <div class="saved-note" id="saved-note" style="display:none"></div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" id="step-back">Назад</button>
+        <button type="button" class="btn btn-secondary" id="step-next">Далее</button>
+        <button type="submit" class="btn btn-primary" id="step-submit" hidden>Опубликовать</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="/script.js"></script>
+</body>
+</html>
